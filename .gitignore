@@ -1,6 +1,8 @@
 # Prerequisites
 *.d
 
+# Ignore git folder
+*.git
 # Object files
 *.o
 *.ko
