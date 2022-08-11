@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-mysql
+  labels:
+    app.kubernetes.io/name: mysql
+    app.kubernetes.io/component: frontend
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mysql
+      app.kubernetes.io/component: frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: mysql
+        app.kubernetes.io/component: frontend
+    spec:
+      containers:
+      - name: simple-webapp-mysql
+        image: 212825301706.dkr.ecr.us-east-1.amazonaws.com/group25-repo-finalproject:v0.1   #replace URI 
+        env:
+        - name: GROUPINFO
+          valueFrom:
+            configMapKeyRef:
+              name: url-config
+              key: group_name
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
+        ports:
+        - containerPort: 81
+        volumeMounts:
+        - name: app-secret-volumes
+          mountPath: /opt/app-secret-volumes
+          readOnly: true
+        - name: config-volume
+          mountPath: /clo835/config
+          readOnly: true
+        envFrom:
+            - secretRef:
+                name: db-secret
+      volumes:
+      - name: app-secret-volumes
+        secret:
+          secretName: db-secret
+      - name: config-volume
+        configMap: 
+          name: url-config
