@@ -1,0 +1,1 @@
+•	eksctl create iamserviceaccount     --name <SA name>     --namespace <name of ns>     --cluster <clusername>     --attach-policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess     --approve     --override-existing-serviceaccounts
