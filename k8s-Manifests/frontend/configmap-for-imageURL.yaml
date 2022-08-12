@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: url-config
 data:
-    group_name : Group-25-Bhavin-Tirth
-    success_image: s3://finalbucket-bhavin-tirth/finalproj1.png
-    fail_image: s3://finalbucket-bhavin-tirth/finalproj1.png   #change Url prior to push
+    Group_Name : FinalGroup25
+    # success_image: s3://finalbucket-bhavin-tirth/finalproj1.png
+    # fail_image: s3://finalbucket-bhavin-tirth/finalproj1.png   #change Url prior to push
