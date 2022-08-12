@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: final
   name: mysql-deployment
   labels:
     app.kubernetes.io/name: mysql
@@ -27,11 +28,11 @@ spec:
               name: db-secret
               key: DB_Password
         volumeMounts:
-        - name: volume-sql-grp25
+        - name: volume-sql-group25
           mountPath: /var/lib/mysql
         ports:
         - containerPort: 3306
       volumes:
-      - name: volume-sql-grp25
+      - name: volume-sql-group25
         persistentVolumeClaim:
           claimName: sql-data

@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapp-mysql
+  namespace: final
   labels:
     app.kubernetes.io/name: mysql
     app.kubernetes.io/component: frontend
@@ -17,9 +18,10 @@ spec:
         app.kubernetes.io/name: mysql
         app.kubernetes.io/component: frontend
     spec:
+      serviceAccountName: clo835
       containers:
       - name: simple-webapp-mysql
-        image: 037261312162.dkr.ecr.us-east-1.amazonaws.com/finalgroup25-repo:v0.1   #replace URI 
+        image: 212825301706.dkr.ecr.us-east-1.amazonaws.com/finalgroup25-repo:v0.1   #replace URI 
         env:
         - name: Group_Name
           valueFrom:
