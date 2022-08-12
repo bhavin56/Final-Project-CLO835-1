@@ -7,12 +7,12 @@
     vertical-align:  middle;">
 
   {% if db_connect_result %}
-    <img src="{{ image_uri }}/success.jpg">   
+<!--     <img src="{{ image_uri }}/success.jpg">    -->
     <h3> Hello from {{ groupname }}</h3>
     <h2>Location of the image: {{ image_uri }}/success.jpg</h2>
     <h3> Successfully connected to the MySQL database.</h3>
   {% else %}
-    <img src="{{ image_uri }}/failed.png">
+<!--     <img src="{{ image_uri }}/failed.png"> -->
     <h2>Location of the image: {{ image_uri }}/failed.png</h2>
     <h3> Failed connecting to the MySQL database. </h3>
   {% endif %}
