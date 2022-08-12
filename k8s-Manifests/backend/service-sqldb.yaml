@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql
+  namespace: final
   labels:
     app.kubernetes.io/name: mysql
     app.kubernetes.io/component: backend
