@@ -4,5 +4,6 @@ metadata:
   name: url-config
 data:
     Group_Name : FinalGroup25
+    Image_Uri: s3://finalgroup25-bucket/
     # success_image: s3://finalbucket-bhavin-tirth/finalproj1.png
     # fail_image: s3://finalbucket-bhavin-tirth/finalproj1.png   #change Url prior to push
