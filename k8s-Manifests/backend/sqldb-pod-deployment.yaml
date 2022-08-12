@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql
+  name: mysql-deployment
   labels:
     app.kubernetes.io/name: mysql
     app.kubernetes.io/component: backend
