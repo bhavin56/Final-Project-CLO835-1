@@ -18,7 +18,7 @@ spec:
         app.kubernetes.io/name: mysql
         app.kubernetes.io/component: frontend
     spec:
-      serviceAccountName: clo835
+      #serviceAccountName: clo835
       containers:
       - name: simple-webapp-mysql
         image: 212825301706.dkr.ecr.us-east-1.amazonaws.com/finalgroup25-repo:v0.1   #replace URI 
@@ -29,12 +29,12 @@ spec:
               name: url-config
               key: Group_Name
         #args: ["$Group_Name"]
-        env:
-        - name: Image_Uri
-          valueFrom:
-            configMapKeyRef:
-              name: url-config
-              key: Image_Uri
+        # env:
+        # - name: Image_Uri
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       name: url-config
+        #       key: Image_Uri
         #args: ["$Image_Uri"]
         env:
         - name: GET_HOSTS_FROM
@@ -45,6 +45,7 @@ spec:
         - name: app-secret-volumes
           mountPath: /opt/app-secret-volumes
           readOnly: true
+        volumeMounts:
         - name: config-volume
           mountPath: /clo835/config
         envFrom:
@@ -57,3 +58,6 @@ spec:
       - name: config-volume
         configMap: 
           name: url-config
+          items:
+              - key: Image_Uri
+                path: Image_Uri
