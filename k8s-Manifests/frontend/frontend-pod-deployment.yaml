@@ -24,10 +24,11 @@ spec:
         image: 212825301706.dkr.ecr.us-east-1.amazonaws.com/finalgroup25-repo:v0.1   #replace URI 
         env:
         - name: GROUP_NAME
-          value: FinalGroup25
-            # configMapKeyRef:
-            #   name: url-config
-            #   key: Group_Name
+          valueFrom: 
+            configMapKeyRef:
+              name: url-config
+              key: Group_Name
+        # env:
         # - name: Image_Uri
         #   valueFrom:
         #     configMapKeyRef:
@@ -49,9 +50,12 @@ spec:
         - name: app-secret-volumes
           mountPath: /opt/app-secret-volumes
           readOnly: true
-        # volumeMounts:
-        # - name: config-volume
-        #   mountPath: /clo835/config
+        volumeMounts:
+        - name: config-volume
+          mountPath: /clo835/config
+        envFrom:
+        - configMapRef:
+           name: name-config
         envFrom:
             - secretRef:
                 name: db-secret
@@ -59,9 +63,9 @@ spec:
       - name: app-secret-volumes
         secret:
           secretName: db-secret
-      # - name: config-volume
-      #   configMap: 
-      #     name: url-config
-      #     items:
-      #         - key: Image_Uri
-      #           path: Image_Uri
+      - name: config-volume
+        configMap: 
+          name: url-config
+          items:
+              - key: Image_Uri
+                path: Image_Uri

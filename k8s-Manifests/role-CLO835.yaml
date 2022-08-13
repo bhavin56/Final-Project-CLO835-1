@@ -4,6 +4,6 @@ metadata:
   name: CLO835
   namespace: final
 rules:
-  - apiGroups: [""]
+  - apiGroups: ["ns"]
     resources: ["namespaces"]
     verbs: ["get", "list", "create"]
