@@ -21,44 +21,32 @@ spec:
       serviceAccountName: clo835
       containers:
       - name: simple-webapp-mysql
-        image: 212825301706.dkr.ecr.us-east-1.amazonaws.com/finalgroup25-repo:v0.1   #replace URI 
+        image: 212825301706.dkr.ecr.us-east-1.amazonaws.com/finalgroup25-repo:v0.2   #replace URI 
         env:
         - name: GROUP_NAME
           valueFrom: 
             configMapKeyRef:
               name: url-config
               key: Group_Name
-        env:
         - name: Image_Uri
           valueFrom:
             configMapKeyRef:
               name: url-config
               key: Image_Uri
-        # env:
-        # - name: Image_Uri
-        #   valueFrom:
-        #     configMapKeyRef:
-        #       name: url-config
-        #       key: Image_Uri
         #args: ["$Image_Uri"]
-        env:
-        - name: GET_HOSTS_FROM
-          value: dns
         ports:
         - containerPort: 81
         volumeMounts:
         - name: app-secret-volumes
           mountPath: /opt/app-secret-volumes
           readOnly: true
-        volumeMounts:
         - name: config-volume
           mountPath: /clo835/config
         envFrom:
         - configMapRef:
-           name: name-config
-        envFrom:
-            - secretRef:
-                name: db-secret
+           name: url-config
+        - secretRef:
+           name: db-secret
       volumes:
       - name: app-secret-volumes
         secret:

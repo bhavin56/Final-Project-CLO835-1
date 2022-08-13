@@ -12,7 +12,7 @@ DB_User = os.environ.get('DB_User')
 DB_Password = os.environ.get('DB_Password') 
 groupname = os.environ.get("GROUP_NAME")
 image_uri = os.environ.get("Image_Uri")
-
+print("groupname", groupname)
 @app.route("/")
 def main():
     db_connect_result = False
