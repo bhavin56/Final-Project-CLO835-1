@@ -23,17 +23,19 @@ spec:
       - name: simple-webapp-mysql
         image: 212825301706.dkr.ecr.us-east-1.amazonaws.com/finalgroup25-repo:v0.1   #replace URI 
         env:
-        - name: GROUP_NAME
+        - name: Group_Name
           valueFrom:
             configMapKeyRef:
               name: url-config
               key: Group_Name
+        args: ["$Group_Name"]
         env:
-        - name: IMAGE_URI
+        - name: Image_Uri
           valueFrom:
             configMapKeyRef:
               name: url-config
               key: Image_Uri
+        args: ["$Image_Uri"]
         env:
         - name: GET_HOSTS_FROM
           value: dns
@@ -45,7 +47,6 @@ spec:
           readOnly: true
         - name: config-volume
           mountPath: /clo835/config
-          readOnly: true
         envFrom:
             - secretRef:
                 name: db-secret

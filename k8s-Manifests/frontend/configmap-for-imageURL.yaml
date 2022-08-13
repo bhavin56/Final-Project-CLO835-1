@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: url-config
 data:
-    Group_Name : FinalGroup25
+    Group_Name: FinalGroup25
     Image_Uri: s3://finalgroup25-bucket1/    #Make sure that an actual bucket name is same
