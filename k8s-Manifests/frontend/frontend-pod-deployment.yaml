@@ -28,14 +28,14 @@ spec:
             configMapKeyRef:
               name: url-config
               key: Group_Name
-        args: ["$Group_Name"]
+        #args: ["$Group_Name"]
         env:
         - name: Image_Uri
           valueFrom:
             configMapKeyRef:
               name: url-config
               key: Image_Uri
-        args: ["$Image_Uri"]
+        #args: ["$Image_Uri"]
         env:
         - name: GET_HOSTS_FROM
           value: dns
