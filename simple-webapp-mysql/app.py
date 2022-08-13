@@ -10,8 +10,8 @@ DB_Host = os.environ.get('DB_Host')  or "mysql"
 DB_Database = os.environ.get('DB_Database') or "mysql"
 DB_User = os.environ.get('DB_User') 
 DB_Password = os.environ.get('DB_Password') 
-groupname = os.environ.get('GROUP_NAME') 
-Image_Uri =  os.environ.get('Image_Uri' , 's3://finalgroup25-bucket1/') # "s3://finalgroup25-bucket1/" 
+groupname = os.environ.get('GROUP_NAME') or 'Bhavin'
+Image_Uri =  os.environ.get('Image_Uri') or 's3://finalgroup25-bucket1/' # "s3://finalgroup25-bucket1/" 
 
 @app.route("/")
 def main():
