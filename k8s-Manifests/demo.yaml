@@ -1,1 +1,7 @@
-•	eksctl create iamserviceaccount     --name <SA name>     --namespace <name of ns>     --cluster <clusername>     --attach-policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess     --approve     --override-existing-serviceaccounts
+eksctl utils associate-iam-oidc-provider --cluster clo835 --approve
+
+eksctl create iamserviceaccount     --name clo835     --namespace final     --cluster clo835     --attach-policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess     --approve     --override-existing-serviceaccounts
+
+#arn:aws:iam::212825301706:role/eksctl-clo835-addon-iamserviceaccount-final-Role1-1765P1CIJGJ42
+
+# kubectl annotate serviceaccount -n final clo835  eks.amazonaws.com/role-arn=arn:aws:iam::212825301706:role/eksctl-clo835-addon-iamserviceaccount-final-Role1-1765P1CIJGJ42

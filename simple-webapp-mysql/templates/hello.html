@@ -1,5 +1,5 @@
 <!doctype html>
-<title>Hello from Flask</title>
+<title>Hello from {{ groupname }}</title>
 <body style="background: {{ color }};"></body>
 <div style="color: #e4e4e4;
     text-align:  center;
@@ -7,14 +7,15 @@
     vertical-align:  middle;">
 
   {% if db_connect_result %}
-    <img src="{{ url_for('static', filename='img/success.jpg') }}">   
-    <h2>S3 link</h2>
+    <img src="{{ image_uri }}/success.jpg">
+    <h3> Hello from {{ groupname }}</h3>
+    <h2>S3 link : {{ image_uri }}</h2>
     <h3> Successfully connected to the MySQL database.</h3>
   {% else %}
-    <img src="{{ url_for('static', filename='img/failed.png') }}">
+    <img src="{{ image_uri }}/failed.png">
     <h3> Failed connecting to the MySQL database. </h3>
   {% endif %}
-
+  
   {% if debug %}
     <h2> {{ debug }} </h2>
   {% endif %}
