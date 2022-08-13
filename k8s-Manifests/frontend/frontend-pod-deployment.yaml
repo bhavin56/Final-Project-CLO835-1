@@ -18,12 +18,12 @@ spec:
         app.kubernetes.io/name: mysql
         app.kubernetes.io/component: frontend
     spec:
-      #serviceAccountName: clo835
+      serviceAccountName: clo835
       containers:
       - name: simple-webapp-mysql
         image: 212825301706.dkr.ecr.us-east-1.amazonaws.com/finalgroup25-repo:v0.1   #replace URI 
         env:
-        - name: Group_Name
+        - name: GROUP_NAME
           valueFrom:
             configMapKeyRef:
               name: url-config
