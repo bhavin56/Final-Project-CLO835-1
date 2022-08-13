@@ -37,7 +37,7 @@ spec:
         #       key: Image_Uri
         #args: ["$Image_Uri"]
         env:
-        - name: GET_HOSTS_FROM
+        - name: GET_HOSTS_ROM
           value: dns
         ports:
         - containerPort: 81
@@ -45,9 +45,9 @@ spec:
         - name: app-secret-volumes
           mountPath: /opt/app-secret-volumes
           readOnly: true
-        volumeMounts:
-        - name: config-volume
-          mountPath: /clo835/config
+        # volumeMounts:
+        # - name: config-volume
+        #   mountPath: /clo835/config
         envFrom:
             - secretRef:
                 name: db-secret
@@ -55,9 +55,9 @@ spec:
       - name: app-secret-volumes
         secret:
           secretName: db-secret
-      - name: config-volume
-        configMap: 
-          name: url-config
-          items:
-              - key: Image_Uri
-                path: Image_Uri
+      # - name: config-volume
+      #   configMap: 
+      #     name: url-config
+      #     items:
+      #         - key: Image_Uri
+      #           path: Image_Uri
