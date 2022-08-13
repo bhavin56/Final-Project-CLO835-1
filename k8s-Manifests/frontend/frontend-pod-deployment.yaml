@@ -24,11 +24,15 @@ spec:
         image: 212825301706.dkr.ecr.us-east-1.amazonaws.com/finalgroup25-repo:v0.1   #replace URI 
         env:
         - name: GROUP_NAME
-          valueFrom:
-            configMapKeyRef:
-              name: url-config
-              key: Group_Name
-        #args: ["$Group_Name"]
+          value: FinalGroup25
+            # configMapKeyRef:
+            #   name: url-config
+            #   key: Group_Name
+        # - name: Image_Uri
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       name: url-config
+        #       key: Image_Uri
         # env:
         # - name: Image_Uri
         #   valueFrom:
@@ -37,7 +41,7 @@ spec:
         #       key: Image_Uri
         #args: ["$Image_Uri"]
         env:
-        - name: GET_HOSTS_ROM
+        - name: GET_HOSTS_FROM
           value: dns
         ports:
         - containerPort: 81

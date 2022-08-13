@@ -6,12 +6,12 @@ import os
 
 app = Flask(__name__)
 
-DB_Host = os.environ.get('DB_Host')  or "mysql"
+DB_Host = os.environ.get('DB_Host') or "mysql"
 DB_Database = os.environ.get('DB_Database') or "mysql"
-DB_User = os.environ.get('DB_User') 
+DB_User = os.environ.get('DB_User')
 DB_Password = os.environ.get('DB_Password') 
-groupname = os.environ.get('GROUP_NAME') or 'Bhavin'
-Image_Uri =  os.environ.get('Image_Uri') or 's3://finalgroup25-bucket1/' # "s3://finalgroup25-bucket1/" 
+groupname = os.getenv("GROUP_NAME")
+image_uri = os.getenv("Image_Uri")
 
 @app.route("/")
 def main():
@@ -25,12 +25,12 @@ def main():
         color = '#ff3f3f'
         err_message = str(e)
 
-    return render_template('hello.html', debug="Environment Variables: DB_Host=" + (os.environ.get('DB_Host') or "Not Set") + "; DB_Database=" + (os.environ.get('DB_Database')  or "Not Set") + "; DB_User=" + (os.environ.get('DB_User')  or "Not Set") + "; DB_Password=" + (os.environ.get('DB_Password')  or "Not Set") + "; " + err_message, db_connect_result=db_connect_result, name=socket.gethostname(), color=color, groupname=groupname, image_uri=Image_Uri)
+    return render_template('hello.html', debug="Environment Variables: DB_Host=" + (os.environ.get('DB_Host') or "Not Set") + "; DB_Database=" + (os.environ.get('DB_Database')  or "Not Set") + "; DB_User=" + (os.environ.get('DB_User')  or "Not Set") + "; DB_Password=" + (os.environ.get('DB_Password')  or "Not Set") + "; " + err_message, db_connect_result=db_connect_result, name=socket.gethostname(), color=color, image_uri=image_uri, groupname=groupname)
 
 @app.route("/debug")
 def debug():
     color = '#2196f3'
-    return render_template('hello.html', debug="Environment Variables: DB_Host=" + (os.environ.get('DB_Host') or "Not Set") + "; DB_Database=" + (os.environ.get('DB_Database')  or "Not Set") + "; DB_User=" + (os.environ.get('DB_User')  or "Not Set") + "; DB_Password=" + (os.environ.get('DB_Password')  or "Not Set"), color=color, groupname=groupname, image_uri=Image_Uri)
+    return render_template('hello.html', debug="Environment Variables: DB_Host=" + (os.environ.get('DB_Host') or "Not Set") + "; DB_Database=" + (os.environ.get('DB_Database')  or "Not Set") + "; DB_User=" + (os.environ.get('DB_User')  or "Not Set") + "; DB_Password=" + (os.environ.get('DB_Password')  or "Not Set"), color=color)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=81)
