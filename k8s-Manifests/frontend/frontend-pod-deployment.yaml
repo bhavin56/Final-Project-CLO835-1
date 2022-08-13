@@ -28,12 +28,12 @@ spec:
             configMapKeyRef:
               name: url-config
               key: Group_Name
-        # env:
-        # - name: Image_Uri
-        #   valueFrom:
-        #     configMapKeyRef:
-        #       name: url-config
-        #       key: Image_Uri
+        env:
+        - name: Image_Uri
+          valueFrom:
+            configMapKeyRef:
+              name: url-config
+              key: Image_Uri
         # env:
         # - name: Image_Uri
         #   valueFrom:

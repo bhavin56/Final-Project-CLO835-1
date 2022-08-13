@@ -10,8 +10,8 @@ DB_Host = os.environ.get('DB_Host') or "mysql"
 DB_Database = os.environ.get('DB_Database') or "mysql"
 DB_User = os.environ.get('DB_User')
 DB_Password = os.environ.get('DB_Password') 
-groupname = os.getenv("GROUP_NAME")
-image_uri = os.getenv("Image_Uri")
+groupname = os.environ.get("GROUP_NAME")
+image_uri = os.environ.get("Image_Uri")
 
 @app.route("/")
 def main():
