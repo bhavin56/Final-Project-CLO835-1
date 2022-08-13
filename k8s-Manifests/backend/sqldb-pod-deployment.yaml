@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: final
-  name: mysql-deployment
+  name: mysql-db-deployment
   labels:
     app.kubernetes.io/name: mysql
     app.kubernetes.io/component: backend
