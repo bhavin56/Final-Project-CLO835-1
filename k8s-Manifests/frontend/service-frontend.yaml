@@ -8,6 +8,6 @@ spec:
     app.kubernetes.io/name: mysql
     app.kubernetes.io/component: frontend
   ports:
-  - port: 81
+  - port: 80
     targetPort: 81
   type: LoadBalancer
