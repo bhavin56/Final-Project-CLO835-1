@@ -1,8 +1,10 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template, url_for
 import socket
 import mysql.connector
 import os
+import boto3
+import io
 
 app = Flask(__name__)
 
@@ -12,6 +14,21 @@ DB_User = os.environ.get('DB_User')
 DB_Password = os.environ.get('DB_Password') 
 groupname = os.environ.get("GROUP_NAME")
 image_uri = os.environ.get("Image_Uri")
+# s3 = boto3.client('s3')
+# s3.download_file('finalgroup25-bucket1', 'success.jpg', 'templates/success.jpg')
+
+AWS_REGION = "us-east-1"
+S3_BUCKET_NAME = "finalgroup25-bucket1"
+
+s3_resource = boto3.resource("s3", region_name=AWS_REGION)
+
+s3_object = s3_resource.Object(S3_BUCKET_NAME, 'success.jpg')
+
+s3_object.download_file('static/success.jpg')
+
+print('S3 object download complete')
+
+
 print("groupname", groupname)
 @app.route("/")
 def main():
