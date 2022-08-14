@@ -7,10 +7,27 @@
     vertical-align:  middle;">
 
   {% if db_connect_result %}
-    <img src="{{url_for('static', filename='success.jpg')}}">
-    <h3> Hello from {{ groupname }}</h3>
-    <h2>S3 link : {{ image_uri }}</h2>
-    <h3> Successfully connected to the MySQL database.</h3>
+    <table border="5" bordercolor="black" align="center">
+      <tr>
+        <td>
+          <img src="{{url_for('static', filename='success.jpg')}}" border=3 height=100 width=300>
+        </td>  
+      </tr>
+      <tr>
+        <td>
+          <h3> Hello from {{ groupname }}</h3>      
+        </td>  
+      </tr>
+      <tr>
+        <td>
+          <h2>S3 link : {{ image_uri }}</h2>      
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h3> Successfully connected to the MySQL database.</h3>
+        </td>>
+      </tr>
   {% else %}
     <img src="{{url_for('static', filename='success.jpg')}}">
     <h3> Failed connecting to the MySQL database. </h3>

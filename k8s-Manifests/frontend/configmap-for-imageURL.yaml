@@ -9,5 +9,4 @@ data:
   region: us-east-1
   bucketname: finalgroup25-bucket1
   
-  #alternate image name:    images.jpg 
-      #success.jpg
+  #Images that been used in the assignment: images.jpg,  success.jpg
