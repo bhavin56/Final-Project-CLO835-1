@@ -48,9 +48,9 @@ jobs:
           # docker build
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           # unit test
-          docker run -d -p 80:80 --name webapp-front $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker run -d -p 81:81 --name webapp-front $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker ps
           echo "Pause for 10 seconds to let container start"
           sleep 10
-          curl localhost:80 -vvv
+          curl localhost:81 -vvv
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
