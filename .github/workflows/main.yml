@@ -41,16 +41,16 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: finalgroup25-repo
-          IMAGE_TAG: v0.1
+          IMAGE_TAG: v0.2
         run: |
           cd simple-webapp-mysql/
           ls -ltra
           # docker build
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           # unit test
-          docker run --env Image_Uri="image" --env Group_Name="Final25" -d -p 80:81 --name webapp-front $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker run -d -p 80:81 --name webapp-front $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker ps
           echo "Pause for 10 seconds to let container start"
           sleep 10
-          curl localhost:80 -vvv
+          curl localhost:81 -vvv
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
