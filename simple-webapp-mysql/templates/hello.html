@@ -4,13 +4,13 @@
 <div style="color: #e4e4e4;
     text-align:  center;
     height: 90px;
-    vertical-align:  middle;">
+    vertical-align:  middle;"
 
   {% if db_connect_result %}
     <table border="5" bordercolor="black" align="center">
       <tr>
         <td>
-          <img src="{{url_for('static', filename='success.jpg')}}" border=3 height=100 width=300>
+          <img src="{{url_for('static', filename='success.jpg')}}" border=3 height=300 width=400>
         </td>  
       </tr>
       <tr>
@@ -20,7 +20,7 @@
       </tr>
       <tr>
         <td>
-          <h2>S3 link : {{ image_uri }}</h2>      
+          <h3>S3 link : {{ image_uri }}</h3>      
         </td>
       </tr>
       <tr>

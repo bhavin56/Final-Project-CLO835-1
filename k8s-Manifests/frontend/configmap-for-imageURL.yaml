@@ -5,7 +5,7 @@ metadata:
   namespace: final
 data:
   Group_Name: FinalGroup25
-  Image_Uri: success.jpg
+  Image_Uri: images.jpg
   region: us-east-1
   bucketname: finalgroup25-bucket1
   
