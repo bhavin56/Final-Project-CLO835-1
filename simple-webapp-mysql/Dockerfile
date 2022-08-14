@@ -1,4 +1,4 @@
-FROM python:alpine
+FROM python:3.8-slim
 
 ADD ./requirements.txt /opt/webapp-mysql/
 

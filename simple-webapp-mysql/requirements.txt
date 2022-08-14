@@ -1,2 +1,8 @@
-Flask
+Flask==2.0.3  
+Flask-MySQL==1.4.0  
+PyMySQL==0.9.3
 mysql-connector-python
+cryptography
+boto3
+Jinja2==3.0.1
+MarkupSafe==2.0.1
