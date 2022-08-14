@@ -6,3 +6,8 @@ metadata:
 data:
   Group_Name: FinalGroup25
   Image_Uri: success.jpg
+  region: us-east-1
+  bucketname: finalgroup25-bucket1
+  
+  #alternate image name:    images.jpg 
+      #success.jpg

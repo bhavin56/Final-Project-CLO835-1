@@ -14,22 +14,27 @@ DB_User = os.environ.get('DB_User')
 DB_Password = os.environ.get('DB_Password') 
 groupname = os.environ.get("GROUP_NAME")
 image_uri = os.environ.get("Image_Uri")
+AWS_REGION = os.environ.get("AWS_REGION")
+S3_BUCKET_NAME= os.environ.get("S3_BUCKET_NAME")
 # s3 = boto3.client('s3')
-# s3.download_file('finalgroup25-bucket1', 'success.jpg', 'templates/success.jpg')
+# s3.download_file('finalgroup25-bucket1', 'success.jpg', 'static/success.jpg')
+path = '/clo835/config/Image_Uri/'+image_uri
 
-AWS_REGION = "us-east-1"
-S3_BUCKET_NAME = "finalgroup25-bucket1"
+basename = os.path.basename(path)
+
+print(basename)
+
+
 
 s3_resource = boto3.resource("s3", region_name=AWS_REGION)
 
-s3_object = s3_resource.Object(S3_BUCKET_NAME, 'success.jpg')
+s3_object = s3_resource.Object(S3_BUCKET_NAME, basename)
 
-s3_object.download_file('static/success.jpg')
+s3_object.download_file('static/success.jpg')     # +basename)
 
 print('S3 object download complete')
-
-
 print("groupname", groupname)
+
 @app.route("/")
 def main():
     db_connect_result = False
@@ -42,7 +47,7 @@ def main():
         color = '#ff3f3f'
         err_message = str(e)
 
-    return render_template('hello.html', debug="Environment Variables: DB_Host=" + (os.environ.get('DB_Host') or "Not Set") + "; DB_Database=" + (os.environ.get('DB_Database')  or "Not Set") + "; DB_User=" + (os.environ.get('DB_User')  or "Not Set") + "; DB_Password=" + (os.environ.get('DB_Password')  or "Not Set") + "; " + err_message, db_connect_result=db_connect_result, name=socket.gethostname(), color=color, image_uri=image_uri, groupname=groupname)
+    return render_template('hello.html', debug="Environment Variables: DB_Host=" + (os.environ.get('DB_Host') or "Not Set") + "; DB_Database=" + (os.environ.get('DB_Database')  or "Not Set") + "; DB_User=" + (os.environ.get('DB_User')  or "Not Set") + "; DB_Password=" + (os.environ.get('DB_Password')  or "Not Set") + "; " + err_message, db_connect_result=db_connect_result, name=socket.gethostname(), color=color, image_uri=image_uri, groupname=groupname, basename=basename)
 
 @app.route("/debug")
 def debug():
