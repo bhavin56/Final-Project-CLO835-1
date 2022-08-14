@@ -21,7 +21,7 @@ spec:
       serviceAccountName: clo835
       containers:
       - name: simple-webapp-mysql
-        image: 212825301706.dkr.ecr.us-east-1.amazonaws.com/finalgroup25-repo:v0.2   #replace URI .
+        image: 212825301706.dkr.ecr.us-east-1.amazonaws.com/finalgroup25-repo:v0.2   #replace URI 
         imagePullPolicy: Always
         env:
         - name: GROUP_NAME
@@ -29,6 +29,16 @@ spec:
             configMapKeyRef:
               name: url-config
               key: Group_Name
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: url-config
+              key: region
+        - name: S3_BUCKET_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: url-config
+              key: bucketname
         # - name: Image_Uri
         #   valueFrom:
         #     configMapKeyRef:
